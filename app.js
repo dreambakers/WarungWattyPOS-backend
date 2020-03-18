@@ -5,7 +5,9 @@ const cors = require('cors');
 const routes = require('./routes/routes');
 
 const app = express();
-app.use(cors({origin:true,credentials: true})); // allow cors headers
+
+app.use(cors());
+app.options('*', cors());
 app.use(bodyParser.json());
 
 const port = process.env.PORT || 3000;
