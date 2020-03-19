@@ -16,6 +16,10 @@ app.get('/', (req, res) => { res.send('Hello world!') });
 
 app.use('/', routes);
 
+app.post('/test', (req, res) => {
+    res.send('test complete')
+})
+
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
