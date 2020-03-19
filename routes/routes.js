@@ -1,5 +1,9 @@
 const express = require('express');
 const router = express.Router();
+const cors = require('cors');
+
+router.use(cors());
+router.options('*', cors());
 
 const order = require("../api/order/order.index");
 const user = require("../api/user/user.index");
