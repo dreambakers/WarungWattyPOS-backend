@@ -34,11 +34,14 @@ const UserSchema = new mongoose.Schema({
         enum: ['admin', 'user'],
         default: 'user'
     }
-});
+},
+    {
+        timestamps: true
+    });
 
 UserSchema.post('save', (error, doc, next) => {
     if (error.name === 'MongoError' && error.code === 11000) {
-        next({ alreadyExists: 1});
+        next({ alreadyExists: 1 });
     } else {
         next(error);
     }
@@ -124,17 +127,17 @@ UserSchema.pre('save', function (next) {   //mongoose middleware, this is going 
 UserSchema.methods.removeToken = function (token) {
     const user = this;
     return user.updateOne({
-      // pull operator lets us pull out a wanted object
-      $pull: {
-        // pull from token array the token object with the same properties as the token passed
-        // into the method
-        tokens: {
-          // whole token object is remove
-          token,
+        // pull operator lets us pull out a wanted object
+        $pull: {
+            // pull from token array the token object with the same properties as the token passed
+            // into the method
+            tokens: {
+                // whole token object is remove
+                token,
+            },
         },
-      },
     });
-  };
+};
 
 
 const User = mongoose.model('User', UserSchema);

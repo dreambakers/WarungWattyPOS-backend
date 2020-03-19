@@ -7,7 +7,10 @@ const orderSchema = new mongoose.Schema({
             quantity: { type: Number }
         }
     ],
-});
+},
+    {
+        timestamps: true
+    });
 
 const Order = mongoose.model('Order', orderSchema);
 module.exports = {

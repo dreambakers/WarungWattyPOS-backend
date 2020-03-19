@@ -8,7 +8,10 @@ const ItemSchema = new mongoose.Schema({
         enum: ['item', 'meal'],
         default: 'item'
     }
-});
+},
+    {
+        timestamps: true
+    });
 
 const Item = mongoose.model('Item', ItemSchema);
 module.exports = {
