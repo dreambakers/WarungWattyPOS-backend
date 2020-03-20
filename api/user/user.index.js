@@ -8,5 +8,5 @@ router
     .post('/login', controller.login)
     .get('/getAllUsers', authenticate, controller.getAllUsersExcept)
     .post('/logout', authenticate, controller.logout)
-
+    .post('/delete', authenticate, controller.deleteUser)
 module.exports = router;
