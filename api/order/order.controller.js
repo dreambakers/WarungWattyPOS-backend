@@ -21,7 +21,7 @@ const createOrder = async ({ body: { order } }, res) => {
 
 const getAllOrders = async (req, res) => {
     try {
-        const orders = await Order.find({}).populate('items.item');
+        const orders = await Order.find({});
         res.json({
             success: 1,
             orders
